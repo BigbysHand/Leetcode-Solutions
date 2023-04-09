@@ -1,50 +1,45 @@
 class Solution(object):
     def countPairs(self, n, edges):
         self.n = n
+
+        unReach = 0
         length = len(edges)
-        connected = False
-        object = []
-        unCon = 0
+        singular = False
 
-        #defines the distinct objects from edges
-        for pairs in edges:
+        objects = []
+        scanned = []
+
+        #object check
+        for i, edge in enumerate(edges):
             temp = []
-            for i in range(edges.index(pairs) + 1, len(edges) - 1):
-                if(any(x in pairs for x in edges[i])):
-                    connected = True
-                    temp.append(edges[i][0])
-                    temp.append(edges[i][1])
-                    edges.remove(edges[i])
+            temp.append(edge)
+            #print(temp)
+            #print(edge[0], edge[1])
+            for nextEdge in edges[i+1:]:
+                if(any(x in nextEdge for x in temp)):
+                    print(nextEdge)
+                    node = list(value for value in nextEdge if value not in temp)
+                    print(node[0])
+                    if node != []:
+                        temp.append(node[0])
+                else:
+                    continue
+            objects.append(temp)
+            scanned.append(edge)
+            scanned.append(nextEdge)
 
-                 
-            temp.append(pairs[0])
-            temp.append(pairs[1])
-            edges.remove(pairs)
+        #print(objects)
 
-            if connected:
-                temp = list(dict.fromkeys(temp))
-                temp.sort()
-                object.append(temp)
-            
-
+                    #temp.append(x not in nextEdge for x in temp)
         
-        #appends the sungular objects to the obj array
-        for i in range(n - length):
-            object.append([0])
-        print(object)
-        #enumerates for the unconnected nodes
-        for i, obj in enumerate(object[:-1]):
-            for j, nextObj in enumerate(object[i + 1:]):
-                unCon += len(obj) * len(nextObj)
-            object.remove(obj)
-        print()
-        return unCon
+        #print(temp)
+
+                    
+
+            #print(temp)
+        return unReach
 
 sol = Solution()
 
-sol.countPairs(6, [[0,1],[2,3],[4,5]])
+sol.countPairs(7, [[0,2],[0,5],[2,4],[1,6],[5,4]])
 
-
-# x = ([[0,1], [0, 2], [1, 2]])
-
-# print(len(x))
