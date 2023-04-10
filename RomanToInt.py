@@ -2,7 +2,7 @@ class Solution(object):
     def romanToInt(self, s):
         self.s = s
 
-        #string to arr conv
+        #string to arr
         string = list(self.s)
         
         #conv roman num tally
