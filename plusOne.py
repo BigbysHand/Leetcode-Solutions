@@ -13,14 +13,10 @@ class Solution(object):
                 asNum += 10**(length - i - 1) * num
             except ValueError:
                 print("array contains wrong values")
-
+        #adds one to the integer
         asNum += 1
-
+        #convert back to array
         result = [int(x) for x in str(asNum)]
-
+        #returns the result
         return result
     
-
-sol = Solution()
-
-print(sol.plusOne([9, 8, 9, 1, 9]))
