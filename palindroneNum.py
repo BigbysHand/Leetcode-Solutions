@@ -1,7 +1,7 @@
 
 class Solution(object):
     def isPalindrome(self, x):
-        #defines the obj x as the input x
+        #defines obj x as the input x
         self.x = x
         #list comprehension for int -> arr conversion
         x_arr = [x for x in str(self.x)]
