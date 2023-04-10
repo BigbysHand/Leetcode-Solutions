@@ -6,42 +6,30 @@ class ListNode(object):
 
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
+        #init 
         head = ListNode()
         currentNode = head  
         carry = 0
 
+        #while both linkedLists in range and carry is not zero
         while(l1 != None or l2 != None or carry != 0):
+            #appropriate value set 
             l1val = l1.val if l1 else 0
             l2val = l2.val if l2 else 0
 
+            #sum
             sum = l1val + l2val + carry
 
+            #next node set to mod of 
             currentNode.next = ListNode(sum % 10)
+            #floor div of 10 for carry = 0 or 1
             carry = sum // 10
 
+            #mving along linked list
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
             currentNode = currentNode.next
-
+        #returns the head position of the first node
         return head.next
 
-a = [9,9,9,9,9,9,9]
-b = [9, 9, 9, 9]
 
-l1 = ListNode()
-l2 = ListNode()
-
-for i, elements in enumerate(a):
-    l1.next = ListNode(elements)
-    l1 = l1.next
-for i, elements in enumerate(b):
-    l2.next = ListNode(elements)
-    l2 = l2.next
-
-while l1 != None:
-    print(l1.val)
-    l1 = l1.next
-
-sol = Solution()
-
-print(sol.addTwoNumbers(l1, l2).next)
