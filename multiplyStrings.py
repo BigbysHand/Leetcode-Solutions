@@ -9,6 +9,6 @@ class Solution(object):
 
         #mult
         output = str(num1 * num2)
-        
+        #returns output
         return output
         
