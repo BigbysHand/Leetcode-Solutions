@@ -1,35 +1,19 @@
 class Solution(object):
     def pivotIndex(self, nums):
+        #init left to 0 and right to tot
         left, right = 0, sum(nums)
-
+        #sub right, add left
         for i, num in enumerate(nums):
             right -= num
-
+            #buble gap of one index to check here for piv
             if right == left:
+                #ret index if buble index is pivot
                 return i
-            
+            #add to left
             left += num
-
+        #no pivot
         return -1
 
-
-            
-sol = Solution()
-print(sol.pivotIndex([2, 1, -1]))
-
-# nums = [1,7,3,6,5,6]
-# left = [x for x in nums]
-# right = [y for y in nums]
-
-# for i in range(1, len(nums)):
-#     left[i] += left[i-1]
-#     right[-i-1] += right[-i]
-
-# for num in left:
-#     if num in right and (right.index(num) - left.index(num) == 2):
-#         print(left.index(num) + 1)
-    
-    
 
 
 
